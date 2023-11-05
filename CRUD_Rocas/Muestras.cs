@@ -10,13 +10,16 @@ namespace CRUD_Rocas
     {
         //Atributos
 
-        private int id { get; set; }
-        private string nombre { get; set; }
-        private string tipo { get; set; }
-        private string textura { get; set; }
-        private DateTime fecha { get; set; }
+        public int id { get; set; }
+        public string nombre { get; set; }
+        public string tipo { get; set; }
+        public string textura { get; set; }
+        public DateTime fecha { get; set; }
         //variable para guardar el QAP de la muestra
-        private List<int> QAPF { get; set; }
-        private string caracteristicas { get; set; }
+        public int Quartz { get; set; }
+        public int AlkaliFeldspar { get; set; }
+        public int Plagioclase { get; set; }
+        public int feldspar { get; set; }
+        public string caracteristicas { get; set; }
     }
 }
