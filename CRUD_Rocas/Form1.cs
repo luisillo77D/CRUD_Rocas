@@ -59,6 +59,13 @@ namespace CRUD_Rocas
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            formIngresar formIngresar = new formIngresar();
+            formIngresar.ShowDialog();
+            this.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
 
         }
     }
