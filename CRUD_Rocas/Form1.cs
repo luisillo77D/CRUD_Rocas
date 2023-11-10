@@ -15,6 +15,23 @@ namespace CRUD_Rocas
         public Form1()
         {
             InitializeComponent();
+            llenarDataGrid();
+        }
+
+        //metodo para llenar el datagridview con las muestras
+        private void llenarDataGrid()
+        {
+            //Creamos un objeto de tipo MuestrasConsulta
+            MuestrasConsulta consulta = new MuestrasConsulta();
+            //Obtenemos todas las muestras de la base de datos
+            List<Muestras> muestras = consulta.getMuestras();
+            //Recorremos la lista de muestras
+            dataGridView1.DataSource = muestras;
+            //foreach (Muestras muestra in muestras)
+            //{
+            //    //Agregamos la muestra al datagridview
+            //    dataGridView1.Rows.Add(muestra.id, muestra.nombre, muestra.tipo, muestra.textura, muestra.fecha, muestra.Quartz, muestra.AlkaliFeldspar, muestra.Plagioclase, muestra.feldspar, muestra.caracteristicas);
+            //}
         }
 
         private void Form1_Load(object sender, EventArgs e)

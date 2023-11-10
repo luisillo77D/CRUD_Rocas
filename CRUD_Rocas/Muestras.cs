@@ -10,7 +10,7 @@ namespace CRUD_Rocas
     {
         //Atributos
 
-        public int id { get; set; }
+        public string id { get; set; }
         public string nombre { get; set; }
         public string tipo { get; set; }
         public string textura { get; set; }

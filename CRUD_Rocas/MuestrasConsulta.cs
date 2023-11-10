@@ -34,7 +34,7 @@ namespace CRUD_Rocas
                 //Creamos un objeto de tipo Muestras
                 Muestras muestra = new Muestras();
                 //Asignamos los valores de la base de datos al objeto
-                muestra.id = Convert.ToInt32(reader["id"]);
+                muestra.id = (reader["id"].ToString());
                 muestra.nombre = reader["nombre"].ToString();
                 muestra.tipo = reader["tipo"].ToString();
                 muestra.textura = reader["textura"].ToString();
@@ -70,7 +70,7 @@ namespace CRUD_Rocas
             while (reader.Read())
             {
                 //Asignamos los valores de la base de datos al objeto
-                muestra.id = Convert.ToInt32(reader["id"]);
+                muestra.id = (reader["id"].ToString());
                 muestra.nombre = reader["nombre"].ToString();
                 muestra.tipo = reader["tipo"].ToString();
                 muestra.textura = reader["textura"].ToString();
@@ -93,8 +93,9 @@ namespace CRUD_Rocas
             //Abrimos la conexion
             conex.conn.Open();
             //Creamos el comando para insertar la muestra
-            SqlCommand comando = new SqlCommand("INSERT INTO Muestras (nombre, tipo, textura, fecha, Quartz, AlkaliFeldspar, Plagioclase, feldspar, caracteristicas) VALUES (@nombre, @tipo, @textura, @fecha, @Quartz, @AlkaliFeldspar, @Plagioclase, @feldspar, @caracteristicas)", conex.conn);
+            SqlCommand comando = new SqlCommand("INSERT INTO Muestras (id,nombre, tipo, textura, fecha, Quartz, AlkaliFeldspar, Plagioclase, feldspar, caracteristicas) VALUES (@id,@nombre, @tipo, @textura, @fecha, @Quartz, @AlkaliFeldspar, @Plagioclase, @feldspar, @caracteristicas)", conex.conn);
             //Agregamos los parametros al comando
+            comando.Parameters.AddWithValue("@id", muestra.id);
             comando.Parameters.AddWithValue("@nombre", muestra.nombre);
             comando.Parameters.AddWithValue("@tipo", muestra.tipo);
             comando.Parameters.AddWithValue("@textura", muestra.textura);
@@ -149,32 +150,7 @@ namespace CRUD_Rocas
             conex.conn.Close();
         }
 
-        //Metodo para obtener el QAP de una muestra
-        public List<int> getQAP(int id)
-        {
-            //Abrimos la conexion
-            conex.conn.Open();
-            //Creamos el comando para obtener el QAP de la muestra
-            SqlCommand comando = new SqlCommand("SELECT Quartz, AlkaliFeldspar, Plagioclase FROM Muestras WHERE id = @id", conex.conn);
-            //Agregamos el parametro id al comando
-            comando.Parameters.AddWithValue("@id", id);
-            //Ejecutamos el comando
-            SqlDataReader reader = comando.ExecuteReader();
-            //Creamos una lista de enteros para guardar el QAP
-            List<int> QAP = new List<int>();
-            //Recorremos el resultado del comando
-            while (reader.Read())
-            {
-                //Agregamos los valores a la lista
-                QAP.Add(Convert.ToInt32(reader["Quartz"]));
-                QAP.Add(Convert.ToInt32(reader["AlkaliFeldspar"]));
-                QAP.Add(Convert.ToInt32(reader["Plagioclase"]));
-            }
-            //Cerramos la conexion
-            conex.conn.Close();
-            //Retornamos la lista de QAP
-            return QAP;
-        }
+        
 
 
        
