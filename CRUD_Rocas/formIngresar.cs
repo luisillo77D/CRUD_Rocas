@@ -40,8 +40,8 @@ namespace CRUD_Rocas
         private void button2_Click(object sender, EventArgs e)
         {
             Form1 form1 = new Form1();
-            form1.ShowDialog();
-            this.Hide();
+            form1.Show();
+            this.Dispose();
             
         }
 

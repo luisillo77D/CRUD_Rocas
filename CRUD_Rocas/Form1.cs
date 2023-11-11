@@ -27,11 +27,7 @@ namespace CRUD_Rocas
             List<Muestras> muestras = consulta.getMuestras();
             //Recorremos la lista de muestras
             dataGridView1.DataSource = muestras;
-            //foreach (Muestras muestra in muestras)
-            //{
-            //    //Agregamos la muestra al datagridview
-            //    dataGridView1.Rows.Add(muestra.id, muestra.nombre, muestra.tipo, muestra.textura, muestra.fecha, muestra.Quartz, muestra.AlkaliFeldspar, muestra.Plagioclase, muestra.feldspar, muestra.caracteristicas);
-            //}
+           
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -77,7 +73,7 @@ namespace CRUD_Rocas
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             formIngresar formIngresar = new formIngresar();
-            formIngresar.ShowDialog();
+            formIngresar.Show();
             this.Hide();
         }
 

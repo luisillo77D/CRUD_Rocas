@@ -13,7 +13,7 @@ namespace CRUD_Rocas
        public Conexion()
         {
             conn = new SqlConnection();
-            conn.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\luisi\\source\\repos\\CRUD_Rocas\\CRUD_Rocas\\DBLaboGeociencias.mdf;Integrated Security=True=";
+            conn.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\luisi\\source\\repos\\CRUD_Rocas\\CRUD_Rocas\\DBLaboGeociencias.mdf;Integrated Security=True";
         }
          
     }
