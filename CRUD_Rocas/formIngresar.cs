@@ -49,5 +49,37 @@ namespace CRUD_Rocas
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Muestras objMuestras = new Muestras
+            {
+                id=txtId.Text,
+                nombre = txtNom.Text,
+                tipo=txtTipo.Text,
+                textura=txtTextura.Text,
+                fecha=DateTime.Now,
+                Quartz=int.Parse(txtQuartz.Text),
+                AlkaliFeldspar=int.Parse(txtAlkali.Text),
+                Plagioclase=int.Parse(txtFeldspar.Text),
+                feldspar=int.Parse(txtFeldspar.Text),
+                caracteristicas=txtCarac.Text
+
+            };
+            MuestrasConsulta objMC = new MuestrasConsulta();
+            objMC.insertarMuestra(objMuestras);
+
+
+        }
+
+        private void textBox9_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

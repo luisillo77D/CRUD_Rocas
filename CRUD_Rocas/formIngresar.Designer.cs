@@ -29,17 +29,18 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtFecha = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCarac = new System.Windows.Forms.TextBox();
+            this.txtFeldspar = new System.Windows.Forms.TextBox();
+            this.txtPlagio = new System.Windows.Forms.TextBox();
+            this.txtAlkali = new System.Windows.Forms.TextBox();
+            this.txtQuartz = new System.Windows.Forms.TextBox();
+            this.txtTextura = new System.Windows.Forms.TextBox();
+            this.txtTipo = new System.Windows.Forms.TextBox();
+            this.txtNom = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -49,24 +50,27 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.dateTimePicker1);
+            this.panel1.Controls.Add(this.txtId);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.txtFecha);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.textBox9);
-            this.panel1.Controls.Add(this.textBox8);
-            this.panel1.Controls.Add(this.textBox7);
-            this.panel1.Controls.Add(this.textBox6);
-            this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtCarac);
+            this.panel1.Controls.Add(this.txtFeldspar);
+            this.panel1.Controls.Add(this.txtPlagio);
+            this.panel1.Controls.Add(this.txtAlkali);
+            this.panel1.Controls.Add(this.txtQuartz);
+            this.panel1.Controls.Add(this.txtTextura);
+            this.panel1.Controls.Add(this.txtTipo);
+            this.panel1.Controls.Add(this.txtNom);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);
@@ -80,6 +84,13 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(493, 473);
             this.panel1.TabIndex = 0;
+            // 
+            // txtFecha
+            // 
+            this.txtFecha.Location = new System.Drawing.Point(134, 170);
+            this.txtFecha.Name = "txtFecha";
+            this.txtFecha.Size = new System.Drawing.Size(156, 20);
+            this.txtFecha.TabIndex = 21;
             // 
             // label10
             // 
@@ -109,72 +120,74 @@
             this.button1.TabIndex = 18;
             this.button1.Text = "Insertar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox9
+            // txtCarac
             // 
-            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox9.Location = new System.Drawing.Point(134, 369);
-            this.textBox9.Multiline = true;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(156, 84);
-            this.textBox9.TabIndex = 17;
+            this.txtCarac.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCarac.Location = new System.Drawing.Point(134, 369);
+            this.txtCarac.Multiline = true;
+            this.txtCarac.Name = "txtCarac";
+            this.txtCarac.Size = new System.Drawing.Size(156, 84);
+            this.txtCarac.TabIndex = 17;
+            this.txtCarac.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
             // 
-            // textBox8
+            // txtFeldspar
             // 
-            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox8.Location = new System.Drawing.Point(134, 318);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(156, 20);
-            this.textBox8.TabIndex = 16;
+            this.txtFeldspar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFeldspar.Location = new System.Drawing.Point(134, 318);
+            this.txtFeldspar.Name = "txtFeldspar";
+            this.txtFeldspar.Size = new System.Drawing.Size(156, 20);
+            this.txtFeldspar.TabIndex = 16;
             // 
-            // textBox7
+            // txtPlagio
             // 
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox7.Location = new System.Drawing.Point(134, 280);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(156, 20);
-            this.textBox7.TabIndex = 15;
+            this.txtPlagio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPlagio.Location = new System.Drawing.Point(134, 280);
+            this.txtPlagio.Name = "txtPlagio";
+            this.txtPlagio.Size = new System.Drawing.Size(156, 20);
+            this.txtPlagio.TabIndex = 15;
             // 
-            // textBox6
+            // txtAlkali
             // 
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox6.Location = new System.Drawing.Point(134, 243);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(156, 20);
-            this.textBox6.TabIndex = 14;
+            this.txtAlkali.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAlkali.Location = new System.Drawing.Point(134, 243);
+            this.txtAlkali.Name = "txtAlkali";
+            this.txtAlkali.Size = new System.Drawing.Size(156, 20);
+            this.txtAlkali.TabIndex = 14;
             // 
-            // textBox5
+            // txtQuartz
             // 
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox5.Location = new System.Drawing.Point(134, 206);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(156, 20);
-            this.textBox5.TabIndex = 13;
+            this.txtQuartz.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtQuartz.Location = new System.Drawing.Point(134, 206);
+            this.txtQuartz.Name = "txtQuartz";
+            this.txtQuartz.Size = new System.Drawing.Size(156, 20);
+            this.txtQuartz.TabIndex = 13;
             // 
-            // textBox3
+            // txtTextura
             // 
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Location = new System.Drawing.Point(134, 136);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(156, 20);
-            this.textBox3.TabIndex = 11;
+            this.txtTextura.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTextura.Location = new System.Drawing.Point(134, 136);
+            this.txtTextura.Name = "txtTextura";
+            this.txtTextura.Size = new System.Drawing.Size(156, 20);
+            this.txtTextura.TabIndex = 11;
             // 
-            // textBox2
+            // txtTipo
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Location = new System.Drawing.Point(134, 97);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(156, 20);
-            this.textBox2.TabIndex = 10;
+            this.txtTipo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTipo.Location = new System.Drawing.Point(134, 97);
+            this.txtTipo.Name = "txtTipo";
+            this.txtTipo.Size = new System.Drawing.Size(156, 20);
+            this.txtTipo.TabIndex = 10;
             // 
-            // textBox1
+            // txtNom
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(134, 63);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(156, 20);
-            this.textBox1.TabIndex = 9;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtNom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNom.Location = new System.Drawing.Point(134, 63);
+            this.txtNom.Name = "txtNom";
+            this.txtNom.Size = new System.Drawing.Size(156, 20);
+            this.txtNom.TabIndex = 9;
+            this.txtNom.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label9
             // 
@@ -260,12 +273,23 @@
             this.label1.Text = "Nombre";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // dateTimePicker1
+            // label11
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(134, 170);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(156, 20);
-            this.dateTimePicker1.TabIndex = 21;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(50, 37);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(18, 13);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "ID";
+            // 
+            // txtId
+            // 
+            this.txtId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtId.Location = new System.Drawing.Point(134, 30);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(156, 20);
+            this.txtId.TabIndex = 23;
+            this.txtId.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // formIngresar
             // 
@@ -294,17 +318,19 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCarac;
+        private System.Windows.Forms.TextBox txtFeldspar;
+        private System.Windows.Forms.TextBox txtPlagio;
+        private System.Windows.Forms.TextBox txtAlkali;
+        private System.Windows.Forms.TextBox txtQuartz;
+        private System.Windows.Forms.TextBox txtTextura;
+        private System.Windows.Forms.TextBox txtTipo;
+        private System.Windows.Forms.TextBox txtNom;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker txtFecha;
+        private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.Label label11;
     }
 }
