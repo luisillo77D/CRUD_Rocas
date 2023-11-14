@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRUD_Rocas
 {
-    internal class Muestras
+    public class Muestras
     {
         //Atributos
 
