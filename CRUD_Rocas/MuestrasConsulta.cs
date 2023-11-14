@@ -136,7 +136,7 @@ namespace CRUD_Rocas
         }
 
         //Metodo para eliminar una muestra de la base de datos
-        public void eliminarMuestra(int id)
+        public void eliminarMuestra(string id)
         {
             //Abrimos la conexion
             conex.conn.Open();

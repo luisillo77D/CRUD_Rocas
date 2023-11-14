@@ -87,9 +87,48 @@ namespace CRUD_Rocas
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnEliminar_Click(object sender, EventArgs e)
         {
-            
+            //intentar eliminar la muestra seleccionada y preguntar si esta seguro
+            try
+            {
+                DialogResult dialogResult = MessageBox.Show("¿Esta seguro que desea eliminar la muestra?", "Eliminar Muestra", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    //Creamos un objeto de tipo MuestrasConsulta
+                    MuestrasConsulta consulta = new MuestrasConsulta();
+                    //Obtenemos el id de la muestra seleccionada
+                    string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                    //Eliminamos la muestra
+                    consulta.eliminarMuestra(id);
+                    //Actualizamos el datagridview
+                    llenarDataGrid();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar la muestra ", ex.Message);
+            }
+        }
+
+        private void btnEditar_Click_1(object sender, EventArgs e)
+        {
+            //abrir el formulario de ingreso enviandole un objeto de tipo Muestras con los datos de la fila seleccionada
+            formIngresar formIngresar = new formIngresar(new Muestras
+            {
+                id = dataGridView1.CurrentRow.Cells[0].Value.ToString(),
+                nombre = dataGridView1.CurrentRow.Cells[1].Value.ToString(),
+                tipo = dataGridView1.CurrentRow.Cells[2].Value.ToString(),
+                textura = dataGridView1.CurrentRow.Cells[3].Value.ToString(),
+                fecha = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[4].Value),
+                Quartz = Convert.ToInt32(dataGridView1.CurrentRow.Cells[5].Value),
+                AlkaliFeldspar = Convert.ToInt32(dataGridView1.CurrentRow.Cells[6].Value),
+                Plagioclase = Convert.ToInt32(dataGridView1.CurrentRow.Cells[7].Value),
+                feldspar = Convert.ToInt32(dataGridView1.CurrentRow.Cells[8].Value),
+                caracteristicas = dataGridView1.CurrentRow.Cells[9].Value.ToString()
+            });
+            formIngresar.Show();
+            this.Hide();
         }
     }
 }

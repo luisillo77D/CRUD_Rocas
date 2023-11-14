@@ -126,7 +126,7 @@ namespace CRUD_Rocas
             if (txtPlagio.Text == "")
             {
                 ok = false;
-                errorProvider1.SetError(txtPlagio, "Ingrese el porcentaje de feldespato plagioclasa de la muestra")
+                errorProvider1.SetError(txtPlagio, "Ingrese el porcentaje de feldespato plagioclasa de la muestra");
             }
             return ok;
         }
