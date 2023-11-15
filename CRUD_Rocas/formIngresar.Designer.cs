@@ -37,8 +37,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.txtCarac = new System.Windows.Forms.TextBox();
             this.txtMafic = new System.Windows.Forms.TextBox();
-            this.txtPlagio = new System.Windows.Forms.TextBox();
             this.txtFeldespar = new System.Windows.Forms.TextBox();
+            this.txtPlagio = new System.Windows.Forms.TextBox();
             this.txtQuartz = new System.Windows.Forms.TextBox();
             this.txtTextura = new System.Windows.Forms.TextBox();
             this.txtTipo = new System.Windows.Forms.TextBox();
@@ -65,8 +65,8 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.txtCarac);
             this.panel1.Controls.Add(this.txtMafic);
-            this.panel1.Controls.Add(this.txtPlagio);
             this.panel1.Controls.Add(this.txtFeldespar);
+            this.panel1.Controls.Add(this.txtPlagio);
             this.panel1.Controls.Add(this.txtQuartz);
             this.panel1.Controls.Add(this.txtTextura);
             this.panel1.Controls.Add(this.txtTipo);
@@ -158,23 +158,26 @@
             this.txtMafic.Name = "txtMafic";
             this.txtMafic.Size = new System.Drawing.Size(156, 20);
             this.txtMafic.TabIndex = 16;
-            this.txtMafic.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFeldspar_KeyPress);
-            // 
-            // txtPlagio
-            // 
-            this.txtPlagio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPlagio.Location = new System.Drawing.Point(134, 250);
-            this.txtPlagio.Name = "txtPlagio";
-            this.txtPlagio.Size = new System.Drawing.Size(156, 20);
-            this.txtPlagio.TabIndex = 15;
+            this.txtMafic.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMafic_KeyPress);
             // 
             // txtFeldespar
             // 
             this.txtFeldespar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtFeldespar.Location = new System.Drawing.Point(134, 289);
+            this.txtFeldespar.Location = new System.Drawing.Point(134, 284);
             this.txtFeldespar.Name = "txtFeldespar";
             this.txtFeldespar.Size = new System.Drawing.Size(156, 20);
-            this.txtFeldespar.TabIndex = 14;
+            this.txtFeldespar.TabIndex = 15;
+            this.txtFeldespar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPlagio_KeyPress);
+            // 
+            // txtPlagio
+            // 
+            this.txtPlagio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPlagio.Location = new System.Drawing.Point(134, 245);
+            this.txtPlagio.Name = "txtPlagio";
+            this.txtPlagio.Size = new System.Drawing.Size(156, 20);
+            this.txtPlagio.TabIndex = 14;
+            this.txtPlagio.TextChanged += new System.EventHandler(this.txtFeldespar_TextChanged);
+            this.txtPlagio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFeldespar_KeyPress);
             // 
             // txtQuartz
             // 
@@ -183,6 +186,7 @@
             this.txtQuartz.Name = "txtQuartz";
             this.txtQuartz.Size = new System.Drawing.Size(156, 20);
             this.txtQuartz.TabIndex = 13;
+            this.txtQuartz.TextChanged += new System.EventHandler(this.txtQuartz_TextChanged);
             // 
             // txtTextura
             // 
@@ -191,6 +195,8 @@
             this.txtTextura.Name = "txtTextura";
             this.txtTextura.Size = new System.Drawing.Size(156, 20);
             this.txtTextura.TabIndex = 11;
+            this.txtTextura.TextChanged += new System.EventHandler(this.txtTextura_TextChanged);
+            this.txtTextura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTextura_KeyPress);
             // 
             // txtTipo
             // 
@@ -199,6 +205,8 @@
             this.txtTipo.Name = "txtTipo";
             this.txtTipo.Size = new System.Drawing.Size(156, 20);
             this.txtTipo.TabIndex = 10;
+            this.txtTipo.TextChanged += new System.EventHandler(this.txtTipo_TextChanged);
+            this.txtTipo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTipo_KeyPress);
             // 
             // txtNom
             // 
@@ -208,6 +216,7 @@
             this.txtNom.Size = new System.Drawing.Size(156, 20);
             this.txtNom.TabIndex = 9;
             this.txtNom.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtNom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNom_KeyPress);
             // 
             // label9
             // 
@@ -323,8 +332,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtCarac;
         private System.Windows.Forms.TextBox txtMafic;
-        private System.Windows.Forms.TextBox txtPlagio;
         private System.Windows.Forms.TextBox txtFeldespar;
+        private System.Windows.Forms.TextBox txtPlagio;
         private System.Windows.Forms.TextBox txtQuartz;
         private System.Windows.Forms.TextBox txtTextura;
         private System.Windows.Forms.TextBox txtTipo;

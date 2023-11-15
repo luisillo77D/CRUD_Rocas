@@ -40,9 +40,9 @@ namespace CRUD_Rocas
                 muestra.textura = reader["textura"].ToString();
                 muestra.fecha = Convert.ToDateTime(reader["fecha"]);
                 muestra.Quartz = Convert.ToInt32(reader["Quartz"]);
-                muestra.Feldspar = Convert.ToInt32(reader["AlkaliFeldspar"]);
+                muestra.Feldspar = Convert.ToInt32(reader["Feldspar"]);
                 muestra.Plagioclase = Convert.ToInt32(reader["Plagioclase"]);
-                muestra.Mafic = Convert.ToInt32(reader["feldspar"]);
+                muestra.Mafic = Convert.ToInt32(reader["Mafic"]);
                 muestra.caracteristicas = reader["caracteristicas"].ToString();
                 //Agregamos el objeto a la lista de muestras
                 muestras.Add(muestra);
@@ -75,9 +75,9 @@ namespace CRUD_Rocas
                 muestra.textura = reader["textura"].ToString();
                 muestra.fecha = Convert.ToDateTime(reader["fecha"]);
                 muestra.Quartz = Convert.ToInt32(reader["Quartz"]);
-                muestra.Feldspar = Convert.ToInt32(reader["AlkaliFeldspar"]);
+                muestra.Feldspar = Convert.ToInt32(reader["Feldspar"]);
                 muestra.Plagioclase = Convert.ToInt32(reader["Plagioclase"]);
-                muestra.Mafic = Convert.ToInt32(reader["feldspar"]);
+                muestra.Mafic = Convert.ToInt32(reader["Mafic"]);
                 muestra.caracteristicas = reader["caracteristicas"].ToString();
                 //Agregamos el objeto a la lista de muestras
                 muestras.Add(muestra);
@@ -97,7 +97,7 @@ namespace CRUD_Rocas
             //Abrimos la conexion
             conex.conn.Open();
             //Creamos el comando para insertar la muestra
-            SqlCommand comando = new SqlCommand("INSERT INTO Muestras (id,nombre, clasifico, textura, fecha, Quartz, AlkaliFeldspar, Plagioclase, feldspar, caracteristicas) VALUES (@id,@nombre, @tipo, @textura, @fecha, @Quartz, @AlkaliFeldspar, @Plagioclase, @feldspar, @caracteristicas)", conex.conn);
+            SqlCommand comando = new SqlCommand("INSERT INTO Muestras (id,nombre, clasifico, textura, fecha, Quartz, Feldspar, Plagioclase, Mafic, caracteristicas) VALUES (@id,@nombre, @tipo, @textura, @fecha, @Quartz, @Feldspar, @Plagioclase, @Mafic, @caracteristicas)", conex.conn);
             //Agregamos los parametros al comando
             comando.Parameters.AddWithValue("@id", muestra.id);
             comando.Parameters.AddWithValue("@nombre", muestra.nombre);
@@ -105,9 +105,9 @@ namespace CRUD_Rocas
             comando.Parameters.AddWithValue("@textura", muestra.textura);
             comando.Parameters.AddWithValue("@fecha", muestra.fecha);
             comando.Parameters.AddWithValue("@Quartz", muestra.Quartz);
-            comando.Parameters.AddWithValue("@AlkaliFeldspar", muestra.Feldspar);
+            comando.Parameters.AddWithValue("@Feldspar", muestra.Feldspar);
             comando.Parameters.AddWithValue("@Plagioclase", muestra.Plagioclase);
-            comando.Parameters.AddWithValue("@feldspar", muestra.Mafic);
+            comando.Parameters.AddWithValue("@Mafic", muestra.Mafic);
             comando.Parameters.AddWithValue("@caracteristicas", muestra.caracteristicas);
             //Ejecutamos el comando
             comando.ExecuteNonQuery();
@@ -116,22 +116,23 @@ namespace CRUD_Rocas
         }
 
         //Metodo para actualizar una muestra en la base de datos
-        public void actualizarMuestra(Muestras muestra)
+        public void actualizarMuestra(Muestras muestra, string id)
         {
             //Abrimos la conexion
             conex.conn.Open();
             //Creamos el comando para actualizar la muestra
-            SqlCommand comando = new SqlCommand("UPDATE Muestras SET nombre = @nombre, clasifico = @tipo, textura = @textura, fecha = @fecha, Quartz = @Quartz, AlkaliFeldspar = @AlkaliFeldspar, Plagioclase = @Plagioclase, feldspar = @feldspar, caracteristicas = @caracteristicas WHERE id = @id", conex.conn);
+            SqlCommand comando = new SqlCommand("UPDATE Muestras SET id=@id1,nombre = @nombre, clasifico = @tipo, textura = @textura, fecha = @fecha, Quartz = @Quartz, Feldspar = @Feldspar, Plagioclase = @Plagioclase, Mafic = @Mafic, caracteristicas = @caracteristicas WHERE id = @id", conex.conn);
             //Agregamos los parametros al comando
-            comando.Parameters.AddWithValue("@id", muestra.id);
+            comando.Parameters.AddWithValue("@id1", muestra.id);
+            comando.Parameters.AddWithValue("@id", id);
             comando.Parameters.AddWithValue("@nombre", muestra.nombre);
             comando.Parameters.AddWithValue("@tipo", muestra.clasifico);
             comando.Parameters.AddWithValue("@textura", muestra.textura);
             comando.Parameters.AddWithValue("@fecha", muestra.fecha);
             comando.Parameters.AddWithValue("@Quartz", muestra.Quartz);
-            comando.Parameters.AddWithValue("@AlkaliFeldspar", muestra.Feldspar);
+            comando.Parameters.AddWithValue("@Feldspar", muestra.Feldspar);
             comando.Parameters.AddWithValue("@Plagioclase", muestra.Plagioclase);
-            comando.Parameters.AddWithValue("@feldspar", muestra.Mafic);
+            comando.Parameters.AddWithValue("@Mafic", muestra.Mafic);
             comando.Parameters.AddWithValue("@caracteristicas", muestra.caracteristicas);
             //Ejecutamos el comando
             comando.ExecuteNonQuery();
