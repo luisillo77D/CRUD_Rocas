@@ -35,8 +35,8 @@ namespace CRUD_Rocas
             txtTextura.Text = objMuestras.textura;
             txtFecha.Value = objMuestras.fecha;
             txtQuartz.Text = objMuestras.Quartz.ToString();
-            txtPlagio.Text = objMuestras.Feldspar.ToString();
-            txtFeldespar.Text = objMuestras.Plagioclase.ToString();
+            txtFeldespar.Text = objMuestras.Feldspar.ToString();
+            txtPlagio.Text = objMuestras.Plagioclase.ToString();
             txtMafic.Text = objMuestras.Mafic.ToString();
             txtCarac.Text = objMuestras.caracteristicas;
             muestrasF = muestras;

@@ -12,6 +12,7 @@ namespace CRUD_Rocas
 {
     public partial class MuestrasF : Form
     {
+        double[] valoresNormalizados = new double[4];
         public MuestrasF()
         {
             InitializeComponent();
@@ -34,9 +35,29 @@ namespace CRUD_Rocas
             MuestrasConsulta consulta = new MuestrasConsulta();
             //Obtenemos todas las muestras de la base de datos
             List<Muestras> muestras = consulta.getMuestras();
-            //Recorremos la lista de muestras
-            dataGridView1.DataSource = muestras;
-            cambiarAnchoColumnas();
+            List<object> lista = new List<object>();
+            //Recorremos la lista de muestras para agregar los valores normalizados de quartz, plagioclase, feldspar y mafic a lista
+            foreach (Muestras muestra in muestras)
+            {
+                valoresNormalizados = normalizar(muestra.Quartz, muestra.Plagioclase, muestra.Feldspar, muestra.Mafic);
+                lista.Add(new { muestra.id, muestra.nombre,  muestra.textura, muestra.clasifico, muestra.fecha, muestra.caracteristicas, muestra.Quartz, muestra.Plagioclase, muestra.Feldspar, muestra.Mafic, QN = valoresNormalizados[0], PN = valoresNormalizados[1], FN = valoresNormalizados[2], MN = valoresNormalizados[3] });
+            }
+
+            dataGridView1.DataSource = lista;
+            cambiarAnchoColumnas();                                      
+        }
+
+        
+        private double[] normalizar(int quartz, int plagioclase, int feldspar, int mafic)
+        {
+            //normalizar los valores de las columnas Quartz, Plagioclase, Feldspar y Mafic con la formula (x) / (a+b+c)*100
+            double[] valoresNormalizados = new double[4];
+            //agregar valores con maximo 2 decimales
+            valoresNormalizados[0] = Math.Round((double)quartz / (plagioclase + feldspar + mafic) * 100, 2);
+            valoresNormalizados[1] = Math.Round((double)plagioclase / (quartz + feldspar + mafic) * 100, 2);
+            valoresNormalizados[2] = Math.Round((double)feldspar / (quartz + plagioclase + mafic) * 100, 2);
+            valoresNormalizados[3] = Math.Round((double)mafic / (quartz + plagioclase + feldspar) * 100, 2);
+            return valoresNormalizados;            
         }
 
         //metodo para cambiar el ancho de las columnas del datagridview
@@ -47,19 +68,23 @@ namespace CRUD_Rocas
             dataGridView1.Columns[2].Width = 100;
             dataGridView1.Columns[3].Width = 80;
             dataGridView1.Columns[4].Width = 80;
-            dataGridView1.Columns[5].Width = 20;
+            dataGridView1.Columns[5].Width = 120;
             dataGridView1.Columns[6].Width = 20;
             dataGridView1.Columns[7].Width = 20;
             dataGridView1.Columns[8].Width = 20;
-            dataGridView1.Columns[9].Width = 200;
-            dataGridView1.Columns[8].HeaderText = "M";
-            dataGridView1.Columns[7].HeaderText = "F";
-            dataGridView1.Columns[6].HeaderText = "P";
-            dataGridView1.Columns[5].HeaderText = "Q";
-            dataGridView1.Columns[2].HeaderText = "Clasificó";
+            dataGridView1.Columns[9].Width = 20;
+            dataGridView1.Columns[10].Width = 40;
+            dataGridView1.Columns[11].Width = 40;
+            dataGridView1.Columns[12].Width = 40;
+            dataGridView1.Columns[13].Width = 40;
+            dataGridView1.Columns[9].HeaderText = "M";
+            dataGridView1.Columns[8].HeaderText = "F";
+            dataGridView1.Columns[7].HeaderText = "P";
+            dataGridView1.Columns[6].HeaderText = "Q";
+            //dataGridView1.Columns[2].HeaderText = "Clasificó";
 
             //cambiar la poscion de la columna 1 por la 9
-            dataGridView1.Columns[2].DisplayIndex = 3;
+            //dataGridView1.Columns[2].DisplayIndex = 3;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -99,14 +124,14 @@ namespace CRUD_Rocas
             {
                 id = dataGridView1.CurrentRow.Cells[0].Value.ToString(),
                 nombre = dataGridView1.CurrentRow.Cells[1].Value.ToString(),
-                clasifico = dataGridView1.CurrentRow.Cells[2].Value.ToString(),
-                textura = dataGridView1.CurrentRow.Cells[3].Value.ToString(),
+                clasifico = dataGridView1.CurrentRow.Cells[3].Value.ToString(),
+                textura = dataGridView1.CurrentRow.Cells[2].Value.ToString(),
                 fecha = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[4].Value),
-                Quartz = Convert.ToInt32(dataGridView1.CurrentRow.Cells[5].Value),
-                Plagioclase = Convert.ToInt32(dataGridView1.CurrentRow.Cells[6].Value),
-                Feldspar = Convert.ToInt32(dataGridView1.CurrentRow.Cells[7].Value),
-                Mafic = Convert.ToInt32(dataGridView1.CurrentRow.Cells[8].Value),
-                caracteristicas = dataGridView1.CurrentRow.Cells[9].Value.ToString()
+                Quartz = Convert.ToInt32(dataGridView1.CurrentRow.Cells[6].Value),
+                Plagioclase = Convert.ToInt32(dataGridView1.CurrentRow.Cells[7].Value),
+                Feldspar = Convert.ToInt32(dataGridView1.CurrentRow.Cells[8].Value),
+                Mafic = Convert.ToInt32(dataGridView1.CurrentRow.Cells[9].Value),
+                caracteristicas = dataGridView1.CurrentRow.Cells[5].Value.ToString()
             },this);
             formIngresar.Show();
             //this.Hide();
