@@ -57,6 +57,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.LightSlateGray;
             this.panel1.Controls.Add(this.txtId);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.txtFecha);
@@ -132,13 +133,14 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Location = new System.Drawing.Point(320, 195);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(115, 55);
             this.button1.TabIndex = 18;
             this.button1.Text = "Guardar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtCarac
