@@ -12,14 +12,14 @@ namespace CRUD_Rocas
 
         public string id { get; set; }
         public string nombre { get; set; }
-        public string tipo { get; set; }
+        public string clasifico { get; set; }
         public string textura { get; set; }
         public DateTime fecha { get; set; }
         //variable para guardar el QAP de la muestra
         public int Quartz { get; set; }
-        public int AlkaliFeldspar { get; set; }
+        public int Feldspar { get; set; }
         public int Plagioclase { get; set; }
-        public int feldspar { get; set; }
+        public int Mafic { get; set; }
         public string caracteristicas { get; set; }
     }
 }

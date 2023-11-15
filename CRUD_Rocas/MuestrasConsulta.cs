@@ -36,13 +36,48 @@ namespace CRUD_Rocas
                 //Asignamos los valores de la base de datos al objeto
                 muestra.id = (reader["id"].ToString());
                 muestra.nombre = reader["nombre"].ToString();
-                muestra.tipo = reader["tipo"].ToString();
+                muestra.clasifico = reader["clasifico"].ToString();
                 muestra.textura = reader["textura"].ToString();
                 muestra.fecha = Convert.ToDateTime(reader["fecha"]);
                 muestra.Quartz = Convert.ToInt32(reader["Quartz"]);
-                muestra.AlkaliFeldspar = Convert.ToInt32(reader["AlkaliFeldspar"]);
+                muestra.Feldspar = Convert.ToInt32(reader["AlkaliFeldspar"]);
                 muestra.Plagioclase = Convert.ToInt32(reader["Plagioclase"]);
-                muestra.feldspar = Convert.ToInt32(reader["feldspar"]);
+                muestra.Mafic = Convert.ToInt32(reader["feldspar"]);
+                muestra.caracteristicas = reader["caracteristicas"].ToString();
+                //Agregamos el objeto a la lista de muestras
+                muestras.Add(muestra);
+            }
+            //Cerramos la conexion
+            conex.conn.Close();
+            //Retornamos la lista de muestras
+            return muestras;
+        }
+        //metodo para obtener las muestras por nombre o id o textura con una solo variable
+        public List<Muestras> getMuestras(string filtro)
+        {
+            //Abrimos la conexion
+            conex.conn.Open();
+            //Creamos el comando para obtener las muestras
+            SqlCommand comando = new SqlCommand("SELECT * FROM Muestras WHERE nombre LIKE @nombre OR id LIKE @nombre OR textura LIKE @nombre", conex.conn);
+            //Agregamos el parametro nombre al comando
+            comando.Parameters.AddWithValue("@nombre", "%" + filtro + "%");
+            //Ejecutamos el comando
+            SqlDataReader reader = comando.ExecuteReader();
+            //Recorremos el resultado del comando
+            while (reader.Read())
+            {
+                //Creamos un objeto de tipo Muestras
+                Muestras muestra = new Muestras();
+                //Asignamos los valores de la base de datos al objeto
+                muestra.id = (reader["id"].ToString());
+                muestra.nombre = reader["nombre"].ToString();
+                muestra.clasifico = reader["clasifico"].ToString();
+                muestra.textura = reader["textura"].ToString();
+                muestra.fecha = Convert.ToDateTime(reader["fecha"]);
+                muestra.Quartz = Convert.ToInt32(reader["Quartz"]);
+                muestra.Feldspar = Convert.ToInt32(reader["AlkaliFeldspar"]);
+                muestra.Plagioclase = Convert.ToInt32(reader["Plagioclase"]);
+                muestra.Mafic = Convert.ToInt32(reader["feldspar"]);
                 muestra.caracteristicas = reader["caracteristicas"].ToString();
                 //Agregamos el objeto a la lista de muestras
                 muestras.Add(muestra);
@@ -53,39 +88,8 @@ namespace CRUD_Rocas
             return muestras;
         }
 
-        //Metodo para obtener una muestra por su id
-        public Muestras getMuestra(int id)
-        {
-            //Abrimos la conexion
-            conex.conn.Open();
-            //Creamos el comando para obtener la muestra
-            SqlCommand comando = new SqlCommand("SELECT * FROM Muestras WHERE id = @id", conex.conn);
-            //Agregamos el parametro id al comando
-            comando.Parameters.AddWithValue("@id", id);
-            //Ejecutamos el comando
-            SqlDataReader reader = comando.ExecuteReader();
-            //Creamos un objeto de tipo Muestras
-            Muestras muestra = new Muestras();
-            //Recorremos el resultado del comando
-            while (reader.Read())
-            {
-                //Asignamos los valores de la base de datos al objeto
-                muestra.id = (reader["id"].ToString());
-                muestra.nombre = reader["nombre"].ToString();
-                muestra.tipo = reader["tipo"].ToString();
-                muestra.textura = reader["textura"].ToString();
-                muestra.fecha = Convert.ToDateTime(reader["fecha"]);
-                muestra.Quartz = Convert.ToInt32(reader["Quartz"]);
-                muestra.AlkaliFeldspar = Convert.ToInt32(reader["AlkaliFeldspar"]);
-                muestra.Plagioclase = Convert.ToInt32(reader["Plagioclase"]);
-                muestra.feldspar = Convert.ToInt32(reader["feldspar"]);
-                muestra.caracteristicas = reader["caracteristicas"].ToString();
-            }
-            //Cerramos la conexion
-            conex.conn.Close();
-            //Retornamos la muestra
-            return muestra;
-        }
+
+        
 
         //Metodo para insertar una muestra en la base de datos
         public void insertarMuestra(Muestras muestra)
@@ -93,17 +97,17 @@ namespace CRUD_Rocas
             //Abrimos la conexion
             conex.conn.Open();
             //Creamos el comando para insertar la muestra
-            SqlCommand comando = new SqlCommand("INSERT INTO Muestras (id,nombre, tipo, textura, fecha, Quartz, AlkaliFeldspar, Plagioclase, feldspar, caracteristicas) VALUES (@id,@nombre, @tipo, @textura, @fecha, @Quartz, @AlkaliFeldspar, @Plagioclase, @feldspar, @caracteristicas)", conex.conn);
+            SqlCommand comando = new SqlCommand("INSERT INTO Muestras (id,nombre, clasifico, textura, fecha, Quartz, AlkaliFeldspar, Plagioclase, feldspar, caracteristicas) VALUES (@id,@nombre, @tipo, @textura, @fecha, @Quartz, @AlkaliFeldspar, @Plagioclase, @feldspar, @caracteristicas)", conex.conn);
             //Agregamos los parametros al comando
             comando.Parameters.AddWithValue("@id", muestra.id);
             comando.Parameters.AddWithValue("@nombre", muestra.nombre);
-            comando.Parameters.AddWithValue("@tipo", muestra.tipo);
+            comando.Parameters.AddWithValue("@tipo", muestra.clasifico);
             comando.Parameters.AddWithValue("@textura", muestra.textura);
             comando.Parameters.AddWithValue("@fecha", muestra.fecha);
             comando.Parameters.AddWithValue("@Quartz", muestra.Quartz);
-            comando.Parameters.AddWithValue("@AlkaliFeldspar", muestra.AlkaliFeldspar);
+            comando.Parameters.AddWithValue("@AlkaliFeldspar", muestra.Feldspar);
             comando.Parameters.AddWithValue("@Plagioclase", muestra.Plagioclase);
-            comando.Parameters.AddWithValue("@feldspar", muestra.feldspar);
+            comando.Parameters.AddWithValue("@feldspar", muestra.Mafic);
             comando.Parameters.AddWithValue("@caracteristicas", muestra.caracteristicas);
             //Ejecutamos el comando
             comando.ExecuteNonQuery();
@@ -117,17 +121,17 @@ namespace CRUD_Rocas
             //Abrimos la conexion
             conex.conn.Open();
             //Creamos el comando para actualizar la muestra
-            SqlCommand comando = new SqlCommand("UPDATE Muestras SET nombre = @nombre, tipo = @tipo, textura = @textura, fecha = @fecha, Quartz = @Quartz, AlkaliFeldspar = @AlkaliFeldspar, Plagioclase = @Plagioclase, feldspar = @feldspar, caracteristicas = @caracteristicas WHERE id = @id", conex.conn);
+            SqlCommand comando = new SqlCommand("UPDATE Muestras SET nombre = @nombre, clasifico = @tipo, textura = @textura, fecha = @fecha, Quartz = @Quartz, AlkaliFeldspar = @AlkaliFeldspar, Plagioclase = @Plagioclase, feldspar = @feldspar, caracteristicas = @caracteristicas WHERE id = @id", conex.conn);
             //Agregamos los parametros al comando
             comando.Parameters.AddWithValue("@id", muestra.id);
             comando.Parameters.AddWithValue("@nombre", muestra.nombre);
-            comando.Parameters.AddWithValue("@tipo", muestra.tipo);
+            comando.Parameters.AddWithValue("@tipo", muestra.clasifico);
             comando.Parameters.AddWithValue("@textura", muestra.textura);
             comando.Parameters.AddWithValue("@fecha", muestra.fecha);
             comando.Parameters.AddWithValue("@Quartz", muestra.Quartz);
-            comando.Parameters.AddWithValue("@AlkaliFeldspar", muestra.AlkaliFeldspar);
+            comando.Parameters.AddWithValue("@AlkaliFeldspar", muestra.Feldspar);
             comando.Parameters.AddWithValue("@Plagioclase", muestra.Plagioclase);
-            comando.Parameters.AddWithValue("@feldspar", muestra.feldspar);
+            comando.Parameters.AddWithValue("@feldspar", muestra.Mafic);
             comando.Parameters.AddWithValue("@caracteristicas", muestra.caracteristicas);
             //Ejecutamos el comando
             comando.ExecuteNonQuery();

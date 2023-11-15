@@ -36,15 +36,15 @@ namespace CRUD_Rocas
             foreach (Muestras muestra in muestras)
             {
                 //Si el tipo de roca no existe en el diccionario
-                if (!tiposRoca.ContainsKey(muestra.tipo))
+                if (!tiposRoca.ContainsKey(muestra.clasifico))
                 {
                     //Agregamos el tipo de roca al diccionario y le asignamos el valor 1
-                    tiposRoca.Add(muestra.tipo, 1);
+                    tiposRoca.Add(muestra.clasifico, 1);
                 }
                 else
                 {
                     //Si el tipo de roca ya existe en el diccionario, incrementamos el valor en 1
-                    tiposRoca[muestra.tipo]++;
+                    tiposRoca[muestra.clasifico]++;
                 }
             }
             //Recorremos el diccionario

@@ -16,6 +16,7 @@ namespace CRUD_Rocas
         {
             InitializeComponent();
             llenarDataGrid();
+            
         }
 
         //metodo para llenar el datagridview con las muestras
@@ -27,7 +28,34 @@ namespace CRUD_Rocas
             List<Muestras> muestras = consulta.getMuestras();
             //Recorremos la lista de muestras
             dataGridView1.DataSource = muestras;
-           
+            cambiarAnchoColumnas();
+
+        }
+
+        //metodo para cambiar el ancho de las columnas del datagridview
+        private void cambiarAnchoColumnas()
+        {
+            dataGridView1.Columns[0].Width = 60;
+            dataGridView1.Columns[1].Width = 100;
+            dataGridView1.Columns[2].Width = 100;
+            dataGridView1.Columns[3].Width = 80;
+            dataGridView1.Columns[4].Width = 80;
+            dataGridView1.Columns[5].Width = 20;
+            dataGridView1.Columns[6].Width = 20;
+            dataGridView1.Columns[7].Width = 20;
+            dataGridView1.Columns[8].Width = 20;
+            dataGridView1.Columns[9].Width = 200;
+            dataGridView1.Columns[8].HeaderText="M";
+            dataGridView1.Columns[7].HeaderText = "F";
+            dataGridView1.Columns[6].HeaderText = "P";
+            dataGridView1.Columns[5].HeaderText = "Q";
+            dataGridView1.Columns[2].HeaderText = "Clasificó";
+
+            //cambiar la poscion de la columna 1 por la 9
+            dataGridView1.Columns[2].DisplayIndex = 3;
+            
+            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -84,6 +112,14 @@ namespace CRUD_Rocas
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            //mostar las muestras que coincidan con el texto ingresado usando el metodo getMuestras(nombre)
+
+            //Creamos un objeto de tipo MuestrasConsulta
+            MuestrasConsulta consulta = new MuestrasConsulta();
+            //Obtenemos todas las muestras de la base de datos
+            List<Muestras> muestras = consulta.getMuestras(textBox1.Text);
+            //Recorremos la lista de muestras
+            dataGridView1.DataSource = muestras;
 
         }
 
@@ -118,13 +154,13 @@ namespace CRUD_Rocas
             {
                 id = dataGridView1.CurrentRow.Cells[0].Value.ToString(),
                 nombre = dataGridView1.CurrentRow.Cells[1].Value.ToString(),
-                tipo = dataGridView1.CurrentRow.Cells[2].Value.ToString(),
+                clasifico = dataGridView1.CurrentRow.Cells[2].Value.ToString(),
                 textura = dataGridView1.CurrentRow.Cells[3].Value.ToString(),
                 fecha = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[4].Value),
                 Quartz = Convert.ToInt32(dataGridView1.CurrentRow.Cells[5].Value),
-                AlkaliFeldspar = Convert.ToInt32(dataGridView1.CurrentRow.Cells[6].Value),
-                Plagioclase = Convert.ToInt32(dataGridView1.CurrentRow.Cells[7].Value),
-                feldspar = Convert.ToInt32(dataGridView1.CurrentRow.Cells[8].Value),
+                Plagioclase = Convert.ToInt32(dataGridView1.CurrentRow.Cells[6].Value),
+                Feldspar= Convert.ToInt32(dataGridView1.CurrentRow.Cells[7].Value),
+                Mafic = Convert.ToInt32(dataGridView1.CurrentRow.Cells[8].Value),
                 caracteristicas = dataGridView1.CurrentRow.Cells[9].Value.ToString()
             });
             formIngresar.Show();
@@ -137,6 +173,11 @@ namespace CRUD_Rocas
         }
 
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

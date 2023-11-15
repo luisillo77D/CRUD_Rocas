@@ -26,13 +26,13 @@ namespace CRUD_Rocas
             modo= 1;
             txtId.Text = objMuestras.id;
             txtNom.Text = objMuestras.nombre;
-            txtTipo.Text = objMuestras.tipo;
+            txtTipo.Text = objMuestras.clasifico;
             txtTextura.Text = objMuestras.textura;
             txtFecha.Value = objMuestras.fecha;
             txtQuartz.Text = objMuestras.Quartz.ToString();
-            txtAlkali.Text = objMuestras.AlkaliFeldspar.ToString();
+            txtFeldespar.Text = objMuestras.Feldspar.ToString();
             txtPlagio.Text = objMuestras.Plagioclase.ToString();
-            txtFeldspar.Text = objMuestras.feldspar.ToString();
+            txtMafic.Text = objMuestras.Mafic.ToString();
             txtCarac.Text = objMuestras.caracteristicas;
         }
 
@@ -77,9 +77,9 @@ namespace CRUD_Rocas
             txtTextura.Clear();
             txtFecha.ResetText();
             txtQuartz.Clear();
-            txtAlkali.Clear();
+            txtFeldespar.Clear();
             txtPlagio.Clear();
-            txtFeldspar.Clear();
+            txtMafic.Clear();
             txtCarac.Clear();
         }
 
@@ -118,10 +118,10 @@ namespace CRUD_Rocas
                 ok = false;
                 errorProvider1.SetError(txtQuartz, "Ingrese el porcentaje de cuarzo de la muestra");
             }
-            if (txtAlkali.Text == "")
+            if (txtFeldespar.Text == "")
             {
                 ok = false;
-                errorProvider1.SetError(txtAlkali, "Ingrese el porcentaje de feldespato alcalino de la muestra");
+                errorProvider1.SetError(txtFeldespar, "Ingrese el porcentaje de feldespato alcalino de la muestra");
             }
             if (txtPlagio.Text == "")
             {
@@ -142,13 +142,13 @@ namespace CRUD_Rocas
                     {
                         id = txtId.Text,
                         nombre = txtNom.Text,
-                        tipo = txtTipo.Text,
+                        clasifico = txtTipo.Text,
                         textura = txtTextura.Text,
                         fecha = txtFecha.Value,
                         Quartz = int.Parse(txtQuartz.Text),
-                        AlkaliFeldspar = int.Parse(txtAlkali.Text),
+                        Feldspar = int.Parse(txtFeldespar.Text),
                         Plagioclase = int.Parse(txtPlagio.Text),
-                        feldspar = int.Parse(txtFeldspar.Text),
+                        Mafic = int.Parse(txtMafic.Text),
                         caracteristicas = txtCarac.Text
 
                     };
@@ -171,13 +171,13 @@ namespace CRUD_Rocas
                     {
                         id = txtId.Text,
                         nombre = txtNom.Text,
-                        tipo = txtTipo.Text,
+                        clasifico = txtTipo.Text,
                         textura = txtTextura.Text,
                         fecha = txtFecha.Value,
                         Quartz = int.Parse(txtQuartz.Text),
-                        AlkaliFeldspar = int.Parse(txtAlkali.Text),
+                        Feldspar = int.Parse(txtFeldespar.Text),
                         Plagioclase = int.Parse(txtPlagio.Text),
-                        feldspar = int.Parse(txtFeldspar.Text),
+                        Mafic = int.Parse(txtMafic.Text),
                         caracteristicas = txtCarac.Text
 
                     };
@@ -204,6 +204,16 @@ namespace CRUD_Rocas
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtFeldspar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
