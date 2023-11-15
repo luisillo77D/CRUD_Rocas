@@ -53,7 +53,13 @@ namespace CRUD_Rocas
                 //Agregamos al chart el tipo de roca y la cantidad de muestras por tipo
                 chart1.Series[0].Points.AddXY(tipoRoca.Key, tipoRoca.Value);
             }
-        }      
-        
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form1 form = new Form1();
+            form.Show();
+            this.Hide();
+        }
     }
 }

@@ -181,5 +181,17 @@ namespace CRUD_Rocas
         {
 
         }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+           Graficos graficos = new Graficos();
+            graficos.Show();
+            this.Hide();
+        }
     }
 }
