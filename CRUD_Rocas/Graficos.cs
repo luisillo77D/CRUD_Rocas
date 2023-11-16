@@ -16,12 +16,47 @@ namespace CRUD_Rocas
         {
             InitializeComponent();
             llenarChart();
+            llenarChart2();
         }
 
         private void Graficos_Load(object sender, EventArgs e)
         {
 
         }
+        //llenar chart2 con la cantidad de muestras por nombre sin contar las muestras sin nombre
+        private void llenarChart2()
+        {
+            //Creamos un objeto de tipo MuestrasConsulta
+            MuestrasConsulta consulta = new MuestrasConsulta();
+            //Obtenemos todas las muestras de la base de datos
+            List<Muestras> muestras = consulta.getMuestras();
+            //Creamos un objeto de tipo Dictionary para almacenar los nombres de las muestras y la cantidad de muestras por nombre
+            Dictionary<string, int> nombres = new Dictionary<string, int>();
+            //Recorremos la lista de muestras
+            foreach (Muestras muestra in muestras)
+            {
+                //Si el nombre de la muestra no existe en el diccionario
+                if (!nombres.ContainsKey(muestra.nombre))
+                {
+                    //Agregamos el nombre de la muestra al diccionario y le asignamos el valor 1
+                    nombres.Add(muestra.nombre, 1);
+                }
+                else
+                {
+                    //Si el nombre de la muestra ya existe en el diccionario, incrementamos el valor en 1
+                    nombres[muestra.nombre]++;
+                }
+            }
+            //Recorremos el diccionario
+            foreach (KeyValuePair<string, int> nombre in nombres)
+            {
+                //Agregamos al chart el nombre de la muestra y la cantidad de muestras por nombre
+                chart2.Series[0].Points.AddXY(nombre.Key, nombre.Value);
+            }
+            //cambiar el nombre de la serie
+            chart2.Series[0].Name = "Muestras por nombre";
+        }
+
 
         //metodo para llenar el chart con las muestras agrupadas por tipo de roca y la cantidad de muestras por tipo
         private void llenarChart()
@@ -65,6 +100,11 @@ namespace CRUD_Rocas
             Inicio inicio = new Inicio();
             inicio.Show();
             this.Hide();
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

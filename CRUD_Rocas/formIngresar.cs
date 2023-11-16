@@ -98,21 +98,7 @@ namespace CRUD_Rocas
                 ok = false;
                 errorProvider1.SetError(txtId, "Ingrese el id de la muestra");
             }
-            if (txtNom.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(txtNom, "Ingrese el nombre de la muestra");
-            }
-            if (txtTipo.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(txtTipo, "Ingrese el tipo de la muestra");
-            }
-            if (txtTextura.Text == "")
-            {
-                ok = false;
-                errorProvider1.SetError(txtTextura, "Ingrese la textura de la muestra");
-            }
+            
             if (txtFecha.Text == "")
             {
                 ok = false;

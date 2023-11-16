@@ -25,7 +25,7 @@ namespace CRUD_Rocas
             //Abrimos la conexion
             conex.conn.Open();
             //Creamos el comando para obtener todas las muestras
-            SqlCommand comando = new SqlCommand("SELECT * FROM Muestras", conex.conn);
+            SqlCommand comando = new SqlCommand("SELECT * FROM Muestras1", conex.conn);
             //Ejecutamos el comando
             SqlDataReader reader = comando.ExecuteReader();
             //Recorremos el resultado del comando
@@ -58,7 +58,7 @@ namespace CRUD_Rocas
             //Abrimos la conexion
             conex.conn.Open();
             //Creamos el comando para obtener las muestras
-            SqlCommand comando = new SqlCommand("SELECT * FROM Muestras WHERE nombre LIKE @nombre OR id LIKE @nombre OR textura LIKE @nombre", conex.conn);
+            SqlCommand comando = new SqlCommand("SELECT * FROM Muestras1 WHERE nombre LIKE @nombre OR id LIKE @nombre OR textura LIKE @nombre", conex.conn);
             //Agregamos el parametro nombre al comando
             comando.Parameters.AddWithValue("@nombre", "%" + filtro + "%");
             //Ejecutamos el comando
@@ -97,7 +97,7 @@ namespace CRUD_Rocas
             //Abrimos la conexion
             conex.conn.Open();
             //Creamos el comando para insertar la muestra
-            SqlCommand comando = new SqlCommand("INSERT INTO Muestras (id,nombre, clasifico, textura, fecha, Quartz, Feldspar, Plagioclase, Mafic, caracteristicas) VALUES (@id,@nombre, @tipo, @textura, @fecha, @Quartz, @Feldspar, @Plagioclase, @Mafic, @caracteristicas)", conex.conn);
+            SqlCommand comando = new SqlCommand("INSERT INTO Muestras1 (id,nombre, clasifico, textura, fecha, Quartz, Feldspar, Plagioclase, Mafic, caracteristicas) VALUES (@id,@nombre, @tipo, @textura, @fecha, @Quartz, @Feldspar, @Plagioclase, @Mafic, @caracteristicas)", conex.conn);
             //Agregamos los parametros al comando
             comando.Parameters.AddWithValue("@id", muestra.id);
             comando.Parameters.AddWithValue("@nombre", muestra.nombre);
@@ -121,7 +121,7 @@ namespace CRUD_Rocas
             //Abrimos la conexion
             conex.conn.Open();
             //Creamos el comando para actualizar la muestra
-            SqlCommand comando = new SqlCommand("UPDATE Muestras SET id=@id1,nombre = @nombre, clasifico = @tipo, textura = @textura, fecha = @fecha, Quartz = @Quartz, Feldspar = @Feldspar, Plagioclase = @Plagioclase, Mafic = @Mafic, caracteristicas = @caracteristicas WHERE id = @id", conex.conn);
+            SqlCommand comando = new SqlCommand("UPDATE Muestras1 SET id=@id1,nombre = @nombre, clasifico = @tipo, textura = @textura, fecha = @fecha, Quartz = @Quartz, Feldspar = @Feldspar, Plagioclase = @Plagioclase, Mafic = @Mafic, caracteristicas = @caracteristicas WHERE id = @id", conex.conn);
             //Agregamos los parametros al comando
             comando.Parameters.AddWithValue("@id1", muestra.id);
             comando.Parameters.AddWithValue("@id", id);
@@ -146,7 +146,7 @@ namespace CRUD_Rocas
             //Abrimos la conexion
             conex.conn.Open();
             //Creamos el comando para eliminar la muestra
-            SqlCommand comando = new SqlCommand("DELETE FROM Muestras WHERE id = @id", conex.conn);
+            SqlCommand comando = new SqlCommand("DELETE FROM Muestras1 WHERE id = @id", conex.conn);
             //Agregamos el parametro id al comando
             comando.Parameters.AddWithValue("@id", id);
             //Ejecutamos el comando
