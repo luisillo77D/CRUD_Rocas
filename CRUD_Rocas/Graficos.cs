@@ -59,5 +59,12 @@ namespace CRUD_Rocas
         {
             
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Inicio inicio = new Inicio();
+            inicio.Show();
+            this.Hide();
+        }
     }
 }
