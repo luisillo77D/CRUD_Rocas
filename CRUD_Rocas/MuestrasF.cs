@@ -66,23 +66,29 @@ namespace CRUD_Rocas
         //metodo para cambiar el ancho de las columnas del datagridview
         private void cambiarAnchoColumnas()
         {
-            dataGridView1.Columns[0].Width = 60;
-            dataGridView1.Columns[1].Width = 100;
-            dataGridView1.Columns[2].Width = 100;
-            dataGridView1.Columns[3].Width = 80;
-            dataGridView1.Columns[4].Width = 80;
-            dataGridView1.Columns[5].Width = 120;
-            dataGridView1.Columns[6].Width = 20;
-            dataGridView1.Columns[7].Width = 20;
-            dataGridView1.Columns[8].Width = 20;
-            dataGridView1.Columns[9].Width = 20;
-            dataGridView1.Columns[10].Width = 40;
-            dataGridView1.Columns[11].Width = 40;
-            dataGridView1.Columns[12].Width = 40;
-            dataGridView1.Columns[9].HeaderText = "M";
-            dataGridView1.Columns[8].HeaderText = "F";
-            dataGridView1.Columns[7].HeaderText = "P";
-            dataGridView1.Columns[6].HeaderText = "Q";
+            //cambiar el ancho de las columnas del datagridview si hay al menos una fila
+            if (dataGridView1.Rows.Count > 0)
+            {
+                dataGridView1.Columns[0].Width = 60;
+                dataGridView1.Columns[1].Width = 100;
+                dataGridView1.Columns[2].Width = 100;
+                dataGridView1.Columns[3].Width = 80;
+                dataGridView1.Columns[4].Width = 80;
+                dataGridView1.Columns[5].Width = 120;
+                dataGridView1.Columns[6].Width = 20;
+                dataGridView1.Columns[7].Width = 20;
+                dataGridView1.Columns[8].Width = 20;
+                dataGridView1.Columns[9].Width = 20;
+                dataGridView1.Columns[10].Width = 40;
+                dataGridView1.Columns[11].Width = 40;
+                dataGridView1.Columns[12].Width = 40;
+                dataGridView1.Columns[9].HeaderText = "M";
+                dataGridView1.Columns[8].HeaderText = "F";
+                dataGridView1.Columns[7].HeaderText = "P";
+                dataGridView1.Columns[6].HeaderText = "Q";
+            }
+
+           
             //dataGridView1.Columns[2].HeaderText = "Clasificó";
 
             //cambiar la poscion de la columna 1 por la 9
